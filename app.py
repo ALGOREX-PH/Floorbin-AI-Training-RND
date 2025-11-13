@@ -55,7 +55,11 @@ with st.sidebar:
     )
 
     # Image quality and size
-    if model == "gpt-image-1" or model == "dall-e-3":
+    if model == "gpt-image-1":
+        quality = st.selectbox("Quality", ["auto", "low", "medium", "high"], index=0,
+                              help="auto = automatic quality selection based on prompt")
+        size = st.selectbox("Size", ["1024x1024", "1792x1024", "1024x1792"], index=0)
+    elif model == "dall-e-3":
         quality = st.selectbox("Quality", ["standard", "hd"], index=1)
         size = st.selectbox("Size", ["1024x1024", "1792x1024", "1024x1792"], index=0)
     else:
