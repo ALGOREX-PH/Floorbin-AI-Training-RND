@@ -208,11 +208,11 @@ Requirements:
 
     with col_b:
         style = st.selectbox(
-            "Style",
+            "Style (DALL-E 3 only)",
             ["vivid", "natural"],
             index=0,
             help="vivid = hyper-real, natural = more realistic"
-        ) if model in ["gpt-image-1", "dall-e-3"] else "vivid"
+        ) if model == "dall-e-3" else "vivid"
 
 # Generate button
 st.markdown("---")
