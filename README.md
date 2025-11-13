@@ -225,12 +225,13 @@ Floorbin-AI-Training/
 ## Tips for Best Results
 
 1. **Be specific in product descriptions**: More detail = better results
-2. **Upload reference images**: Provide product photos to help the AI understand colors, styling, and branding
-3. **Reference brand guidelines**: Mention "TEREA style", "IQOS aesthetic"
-4. **Specify 3D elements**: Explicitly request "3D floorbin structure"
-5. **Iterate prompts**: Try variations of successful prompts
-6. **Use high quality settings**: For gpt-image-1 use 'high' or 'auto', for DALL-E 3 use 'hd'
-7. **Combine with manual design**: Use AI for ideation, refine manually
+2. **Upload reference images**: Provide product photos - the AI will keep the product exactly as shown (same colors, same design) while applying your custom colors to the floorbin structure
+3. **Use custom color pickers**: Choose exact hex colors for your floorbin - primary panels, accent lighting, and base platform can all be customized to match your brand or campaign
+4. **Reference brand guidelines**: Mention "TEREA style", "IQOS aesthetic"
+5. **Specify 3D elements**: Explicitly request "3D floorbin structure"
+6. **Iterate prompts**: Try variations of successful prompts
+7. **Use high quality settings**: For gpt-image-1 use 'high' or 'auto', for DALL-E 3 use 'hd'
+8. **Combine with manual design**: Use AI for ideation, refine manually
 
 ## Troubleshooting
 
