@@ -187,7 +187,7 @@ Floorbin-AI-Training/
 2. **Reference brand guidelines**: Mention "TEREA style", "IQOS aesthetic"
 3. **Specify 3D elements**: Explicitly request "3D floorbin structure"
 4. **Iterate prompts**: Try variations of successful prompts
-5. **Use HD quality**: For presentation-ready concepts
+5. **Use high quality settings**: For gpt-image-1 use 'high' or 'auto', for DALL-E 3 use 'hd'
 6. **Combine with manual design**: Use AI for ideation, refine manually
 
 ## Troubleshooting
