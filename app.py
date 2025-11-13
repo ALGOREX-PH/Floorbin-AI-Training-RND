@@ -303,6 +303,6 @@ if st.session_state.generated_images:
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
-    <p>Floorbin Design AI Generator | Powered by OpenAI DALL-E | Publicis AI Exploration</p>
+    <p>Floorbin Design AI Generator | Powered by OpenAI | Publicis AI Exploration</p>
 </div>
 """, unsafe_allow_html=True)
