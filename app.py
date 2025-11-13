@@ -263,8 +263,13 @@ if generate_button:
                 st.session_state.generated_images = []
 
                 for img_data in response.data:
+                    # Check if response has URL or base64 data
+                    img_url = getattr(img_data, 'url', None)
+                    img_b64 = getattr(img_data, 'b64_json', None)
+
                     st.session_state.generated_images.append({
-                        'url': img_data.url,
+                        'url': img_url,
+                        'b64_json': img_b64,
                         'revised_prompt': getattr(img_data, 'revised_prompt', None),
                         'product': product_name,
                         'model': model
