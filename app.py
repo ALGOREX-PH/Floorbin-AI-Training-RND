@@ -280,7 +280,7 @@ if st.session_state.generated_images:
             st.markdown(f"**Model:** {img_info['model']}")
 
             if img_info['revised_prompt']:
-                with st.expander("View Revised Prompt (DALL-E 3)"):
+                with st.expander("View Revised Prompt"):
                     st.write(img_info['revised_prompt'])
 
             # Download button
