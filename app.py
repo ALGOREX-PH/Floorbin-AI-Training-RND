@@ -111,6 +111,20 @@ with col1:
 
     st.markdown("---")
 
+    # Reference image upload
+    st.subheader("Product Reference Image")
+    uploaded_file = st.file_uploader(
+        "Upload Product Image (Optional)",
+        type=["png", "jpg", "jpeg"],
+        help="Upload a reference image of the product for visual context"
+    )
+
+    if uploaded_file is not None:
+        reference_image = Image.open(uploaded_file)
+        st.image(reference_image, caption="Reference Image", use_container_width=True)
+
+    st.markdown("---")
+
     st.header("Design Direction")
 
     # Creative mood
