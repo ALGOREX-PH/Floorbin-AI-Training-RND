@@ -293,12 +293,21 @@ if st.session_state.generated_images:
         with col_img:
             # Download and display the image
             try:
-                response = requests.get(img_info['url'])
-                if response.status_code == 200:
-                    image = Image.open(BytesIO(response.content))
+                if img_info['url']:
+                    # Handle URL-based response (DALL-E models)
+                    response = requests.get(img_info['url'])
+                    if response.status_code == 200:
+                        image = Image.open(BytesIO(response.content))
+                        st.image(image, use_container_width=True)
+                    else:
+                        st.error(f"Failed to load image: Status {response.status_code}")
+                elif img_info['b64_json']:
+                    # Handle base64-encoded response (gpt-image-1)
+                    image_data = base64.b64decode(img_info['b64_json'])
+                    image = Image.open(BytesIO(image_data))
                     st.image(image, use_container_width=True)
                 else:
-                    st.error(f"Failed to load image: Status {response.status_code}")
+                    st.error("No image data available")
             except Exception as e:
                 st.error(f"Error loading image: {str(e)}")
 
