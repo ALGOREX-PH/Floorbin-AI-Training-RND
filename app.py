@@ -288,31 +288,31 @@ LIGHTING & ATMOSPHERE:
 - Dark background with colored accents"""
 
     elif design_tone == "Minimal & Clean":
-        tone_instructions = """minimal, clean, and ultra-refined style.
+        tone_instructions = f"""minimal, clean, and ultra-refined style.
 
 STRUCTURE & LAYOUT:
 - Simple, elegant geometric forms
 - Clean lines with minimal ornamentation
 - 2-3 levels with clear separation
 - Emphasis on negative space
-- Pure white or neutral base
+- Pure neutral base
 
 COLOR SCHEME & MATERIALS:
-- Monochromatic or very limited color palette
-- White, light gray, or soft neutrals
+- Primary: Panels in {primary_color} with clean, minimal aesthetic
+- Accent: Subtle accents in {accent_color} if any
+- Base: Platform in {base_color} with refined finish
 - Matte finishes throughout
-- Subtle metal accents if any
 - Clean, uncluttered aesthetic
 
 LIGHTING & ATMOSPHERE:
 - Soft, even lighting
 - Minimal shadows
 - Natural, clean atmosphere
-- Pure white or very light gray background
+- Pure neutral or very light background
 - Focus on simplicity and clarity"""
 
     else:  # Vibrant & Energetic
-        tone_instructions = """vibrant, energetic, and eye-catching style.
+        tone_instructions = f"""vibrant, energetic, and eye-catching style.
 
 STRUCTURE & LAYOUT:
 - Dynamic, playful multi-level design
@@ -322,15 +322,16 @@ STRUCTURE & LAYOUT:
 - Colorful base elements
 
 COLOR SCHEME & MATERIALS:
-- Bright, saturated colors
-- Gradient backgrounds and colored lighting
+- Primary: Panels in {primary_color} with vibrant, energetic finish
+- Accent: Bright lighting in {accent_color} creating excitement
+- Base: Platform in {base_color} with colorful elements
 - Mix of glossy and matte finishes
 - Colorful accent elements throughout
 - Joyful, vibrant color palette
 
 LIGHTING & ATMOSPHERE:
 - Bright, colorful lighting
-- Rainbow or multi-colored LED accents
+- Multi-colored LED accents featuring {accent_color}
 - Cheerful, upbeat atmosphere
 - Colorful gradient background
 - Energetic, dynamic feel"""
