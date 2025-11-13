@@ -187,8 +187,129 @@ with col1:
 with col2:
     st.header("Prompt Configuration")
 
+    # Generate tone-specific instructions
+    if design_tone == "Premium & Sophisticated":
+        tone_instructions = """sophisticated, high-end style with museum-quality presentation.
+
+STRUCTURE & LAYOUT:
+- Multi-tiered stepped display structure with 3-4 levels creating depth
+- Each tier should be a clean platform/shelf at different heights
+- Stepped/terraced design showing clear elevation between levels
+- Elegant, refined structural design
+- Black base platform with premium finish
+
+COLOR SCHEME & MATERIALS:
+- Primary: Clean white/cream background panels with matte finish
+- Accent: Elegant gold edge lighting around each tier
+- Base: Deep black platform and structural elements
+- Price tags: Black rectangles with white text
+- Premium, luxurious materials
+
+LIGHTING & ATMOSPHERE:
+- Professional studio lighting with soft shadows
+- Golden LED edge lighting highlighting tier edges
+- Premium lighting creating depth and dimension
+- Dramatic but sophisticated lighting
+- Clean gray studio background"""
+
+    elif design_tone == "Striking & Powerful":
+        tone_instructions = """striking, powerful, and commanding presence.
+
+STRUCTURE & LAYOUT:
+- Bold, dynamic multi-level structure with dramatic height differences
+- Angular, geometric tiers creating visual impact
+- Strong vertical presence dominating the space
+- Confident structural elements
+- Dark base with strong contrast
+
+COLOR SCHEME & MATERIALS:
+- High-contrast color scheme with bold accents
+- Dramatic lighting - bright spotlights or colored LED accents
+- Mix of matte black and glossy finishes
+- Metallic accents (silver, chrome, or bold gold)
+- Strong visual contrast throughout
+
+LIGHTING & ATMOSPHERE:
+- Dramatic directional lighting creating strong shadows
+- High-intensity spotlights on key products
+- Colored accent lighting for impact
+- Bold, theatrical atmosphere
+- Dark or gradient background for drama"""
+
+    elif design_tone == "Bold & Aggressive":
+        tone_instructions = """bold, aggressive, and high-energy style.
+
+STRUCTURE & LAYOUT:
+- Dynamic, asymmetric structure with sharp angles
+- Dramatic diagonal lines and bold geometric shapes
+- Unconventional tier arrangements
+- Edgy, attention-grabbing design
+- Strong base with industrial elements
+
+COLOR SCHEME & MATERIALS:
+- Intense color combinations (black with neon, red, electric blue)
+- Glossy, reflective surfaces
+- Industrial materials mixed with premium finishes
+- Sharp contrasts and bold patterns
+- Vibrant accent colors
+
+LIGHTING & ATMOSPHERE:
+- Intense, high-contrast lighting
+- Neon or colored LED strips for edge lighting
+- Dramatic spotlights and shadows
+- Energetic, dynamic feel
+- Dark background with colored accents"""
+
+    elif design_tone == "Minimal & Clean":
+        tone_instructions = """minimal, clean, and ultra-refined style.
+
+STRUCTURE & LAYOUT:
+- Simple, elegant geometric forms
+- Clean lines with minimal ornamentation
+- 2-3 levels with clear separation
+- Emphasis on negative space
+- Pure white or neutral base
+
+COLOR SCHEME & MATERIALS:
+- Monochromatic or very limited color palette
+- White, light gray, or soft neutrals
+- Matte finishes throughout
+- Subtle metal accents if any
+- Clean, uncluttered aesthetic
+
+LIGHTING & ATMOSPHERE:
+- Soft, even lighting
+- Minimal shadows
+- Natural, clean atmosphere
+- Pure white or very light gray background
+- Focus on simplicity and clarity"""
+
+    else:  # Vibrant & Energetic
+        tone_instructions = """vibrant, energetic, and eye-catching style.
+
+STRUCTURE & LAYOUT:
+- Dynamic, playful multi-level design
+- Curved or flowing tier arrangements
+- Energetic, upward-moving composition
+- Fun, engaging structural elements
+- Colorful base elements
+
+COLOR SCHEME & MATERIALS:
+- Bright, saturated colors
+- Gradient backgrounds and colored lighting
+- Mix of glossy and matte finishes
+- Colorful accent elements throughout
+- Joyful, vibrant color palette
+
+LIGHTING & ATMOSPHERE:
+- Bright, colorful lighting
+- Rainbow or multi-colored LED accents
+- Cheerful, upbeat atmosphere
+- Colorful gradient background
+- Energetic, dynamic feel"""
+
     # Auto-generate prompt based on selections
-    auto_prompt = f"""Create a premium 3D retail floorbin display for {product_name} in a sophisticated, high-end style.
+    auto_prompt = f"""Create a premium 3D retail floorbin display for {product_name} in a {tone_instructions}
 
 STRUCTURE & LAYOUT:
 - Multi-tiered stepped display structure with 3-4 levels creating depth
