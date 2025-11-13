@@ -311,61 +311,42 @@ LIGHTING & ATMOSPHERE:
     # Auto-generate prompt based on selections
     auto_prompt = f"""Create a premium 3D retail floorbin display for {product_name} in a {tone_instructions}
 
-STRUCTURE & LAYOUT:
-- Multi-tiered stepped display structure with 3-4 levels creating depth
-- Each tier should be a clean platform/shelf at different heights
-- Stepped/terraced design showing clear elevation between levels
-- Products arranged across multiple tiers with clear visibility
-- Black base platform with premium finish
-
-COLOR SCHEME & MATERIALS:
-- Primary: Clean white/cream background panels with matte finish
-- Accent: Elegant gold edge lighting around each tier
-- Base: Deep black platform and structural elements
-- Price tags: Black rectangles with white text
-- Overall: {", ".join(color_scheme)}
-
 PRODUCT DISPLAY:
 - Multiple {product_name} product boxes displayed prominently
-- IQOS ILUMA device featured on one of the middle tiers
+- IQOS ILUMA device featured on one of the tiers
 - Products arranged at varying angles for visual interest
 - Clear product visibility from front view
 - Flavor: {product_flavor}
-{f"- Price displays showing: {price}" if price else "- Price tags in black with white text (¥580 style)"}
+{f"- Price displays showing: {price}" if price else "- Price tags prominently displayed"}
 {f"- Launch Date: {launch_date}" if launch_date else ""}
-
-LIGHTING & ATMOSPHERE:
-- Professional studio lighting with soft shadows
-- Golden edge lighting (LED strips) highlighting tier edges
-- Premium lighting creating depth and dimension
-- Dramatic but sophisticated lighting
-- Clean gray studio background
+- Additional color guidance: {", ".join(color_scheme)}
+- Key elements to include: {", ".join(design_elements)}
 
 TYPOGRAPHY & BRANDING:
 - Large "TEREA" branding at top of display
 - Product name "{product_name}" in bold typography
 - Japanese text included for authenticity
-- Flavor description in elegant typography
-- Price displays in clean, modern font
+- Flavor description in typography matching the tone
+- Price displays in modern font
 
 MOOD & STYLE:
-- {", ".join(creative_mood)}
-- Ultra-premium retail aesthetic
-- Japanese luxury retail environment
-- Museum-quality display presentation
+- Overall mood: {", ".join(creative_mood)}
+- Design tone: {design_tone}
+- Japanese retail environment aesthetic
+- IQOS ILUMA brand aesthetic
 - Photorealistic 3D rendering quality
 - Professional product photography style
+{f"- Style reference: {historical_style}" if historical_style != "None" else ""}
 
 TECHNICAL REQUIREMENTS:
 - 3D rendered appearance with perfect perspective
 - Photorealistic materials and textures
 - Professional color grading
 - Clean composition with proper negative space
-- Suitable for Japanese premium retail environment
-- IQOS ILUMA brand aesthetic
-{"- Match the product design and colors from the reference image provided" if uploaded_file is not None else ""}
+- Suitable for Japanese retail environment
+{"- IMPORTANT: Match the product design and colors from the reference image provided" if uploaded_file is not None else ""}
 
-Create a display that looks expensive, sophisticated, and museum-quality - similar to high-end watch or perfume displays."""
+Design Approach: Create a display that embodies the {design_tone.lower()} aesthetic while maintaining the TEREA brand identity."""
 
     # Display auto-generated prompt
     st.text_area(
