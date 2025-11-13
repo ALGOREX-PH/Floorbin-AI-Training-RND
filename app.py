@@ -263,7 +263,7 @@ LIGHTING & ATMOSPHERE:
 - Dark or gradient background for drama"""
 
     elif design_tone == "Bold & Aggressive":
-        tone_instructions = """bold, aggressive, and high-energy style.
+        tone_instructions = f"""bold, aggressive, and high-energy style.
 
 STRUCTURE & LAYOUT:
 - Dynamic, asymmetric structure with sharp angles
@@ -273,15 +273,16 @@ STRUCTURE & LAYOUT:
 - Strong base with industrial elements
 
 COLOR SCHEME & MATERIALS:
-- Intense color combinations (black with neon, red, electric blue)
+- Primary: Panels in {primary_color} with bold, edgy finish
+- Accent: Intense lighting in {accent_color} (can be neon-like or vibrant)
+- Base: Platform in {base_color} with strong industrial presence
 - Glossy, reflective surfaces
 - Industrial materials mixed with premium finishes
 - Sharp contrasts and bold patterns
-- Vibrant accent colors
 
 LIGHTING & ATMOSPHERE:
 - Intense, high-contrast lighting
-- Neon or colored LED strips for edge lighting
+- Neon or colored LED strips in {accent_color} for edge lighting
 - Dramatic spotlights and shadows
 - Energetic, dynamic feel
 - Dark background with colored accents"""
