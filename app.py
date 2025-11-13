@@ -240,7 +240,8 @@ if generate_button:
                         prompt=final_prompt,
                         size=size,
                         quality=quality,
-                        n=1
+                        n=1,
+                        response_format="url"
                     )
                 elif model == "dall-e-3":
                     response = openai.images.generate(
@@ -249,14 +250,16 @@ if generate_button:
                         size=size,
                         quality=quality,
                         style=style,
-                        n=1
+                        n=1,
+                        response_format="url"
                     )
                 else:  # dall-e-2
                     response = openai.images.generate(
                         model=model,
                         prompt=final_prompt,
                         size=size,
-                        n=num_variations
+                        n=num_variations,
+                        response_format="url"
                     )
 
                 # Store generated images
