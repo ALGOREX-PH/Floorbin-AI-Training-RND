@@ -230,7 +230,15 @@ if generate_button:
         with st.spinner("🎨 Generating design concept... This may take 30-60 seconds..."):
             try:
                 # Call OpenAI API
-                if model in ["gpt-image-1", "dall-e-3"]:
+                if model == "gpt-image-1":
+                    response = openai.images.generate(
+                        model=model,
+                        prompt=final_prompt,
+                        size=size,
+                        quality=quality,
+                        n=1
+                    )
+                elif model == "dall-e-3":
                     response = openai.images.generate(
                         model=model,
                         prompt=final_prompt,
@@ -239,7 +247,7 @@ if generate_button:
                         style=style,
                         n=1
                     )
-                else:
+                else:  # dall-e-2
                     response = openai.images.generate(
                         model=model,
                         prompt=final_prompt,
