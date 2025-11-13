@@ -214,28 +214,28 @@ with col2:
 
     # Generate tone-specific instructions
     if design_tone == "Premium & Sophisticated":
-        tone_instructions = """sophisticated, high-end style with museum-quality presentation.
+        tone_instructions = f"""sophisticated, high-end style with museum-quality presentation.
 
 STRUCTURE & LAYOUT:
 - Multi-tiered stepped display structure with 3-4 levels creating depth
 - Each tier should be a clean platform/shelf at different heights
 - Stepped/terraced design showing clear elevation between levels
 - Elegant, refined structural design
-- Black base platform with premium finish
+- Base platform with premium finish
 
 COLOR SCHEME & MATERIALS:
-- Primary: Clean white/cream background panels with matte finish
-- Accent: Elegant gold edge lighting around each tier
-- Base: Deep black platform and structural elements
-- Price tags: Black rectangles with white text
+- Primary: Background panels in {primary_color} (hex color) with matte finish
+- Accent: Edge lighting in {accent_color} (hex color) around each tier
+- Base: Platform in {base_color} (hex color) and structural elements
+- Price tags styled to complement the color scheme
 - Premium, luxurious materials
 
 LIGHTING & ATMOSPHERE:
 - Professional studio lighting with soft shadows
-- Golden LED edge lighting highlighting tier edges
+- LED edge lighting in {accent_color} highlighting tier edges
 - Premium lighting creating depth and dimension
 - Dramatic but sophisticated lighting
-- Clean gray studio background"""
+- Clean neutral studio background"""
 
     elif design_tone == "Striking & Powerful":
         tone_instructions = """striking, powerful, and commanding presence.
