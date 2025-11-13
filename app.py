@@ -173,6 +173,7 @@ Product Details:
 - Flavor: {product_flavor}
 {f"- Launch Date: {launch_date}" if launch_date else ""}
 {f"- Price: {price}" if price else ""}
+{"- Reference image provided: Design should match the product appearance shown in the reference" if uploaded_file is not None else ""}
 
 Design Direction:
 - Mood: {", ".join(creative_mood)}
@@ -186,7 +187,8 @@ Requirements:
 - Premium tobacco product positioning
 - Clean, modern, eye-catching design
 - Suitable for Japanese retail environment
-- 3D floorbin structure with product placement"""
+- 3D floorbin structure with product placement
+{"- Match the product design and colors from the reference image" if uploaded_file is not None else ""}"""
 
     # Display auto-generated prompt
     st.text_area(
