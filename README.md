@@ -10,6 +10,7 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
 
 - **Product Customization**: Input specific product details (name, flavor, launch date, price)
 - **Reference Image Upload**: Upload product images for visual reference and context
+- **Design Tone Selection**: Choose from 5 distinct tones - Premium & Sophisticated, Striking & Powerful, Bold & Aggressive, Minimal & Clean, or Vibrant & Energetic
 - **Creative Direction**: Select mood, color palette, and design elements based on TEREA brand guidelines
 - **Historical Reference**: Apply styles from past successful campaigns (Oasis Pearl, Black Ruby, SENTIA, etc.)
 - **AI-Powered Generation**: Use gpt-image-1, DALL-E 3, or DALL-E 2 for image generation
