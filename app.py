@@ -49,13 +49,13 @@ with st.sidebar:
     # Model selection
     model = st.selectbox(
         "Model",
-        ["dall-e-3", "dall-e-2"],
+        ["gpt-image-1", "dall-e-3", "dall-e-2"],
         index=0,
-        help="DALL-E 3 produces higher quality images"
+        help="gpt-image-1 is OpenAI's latest image generation model"
     )
 
     # Image quality and size
-    if model == "dall-e-3":
+    if model == "gpt-image-1" or model == "dall-e-3":
         quality = st.selectbox("Quality", ["standard", "hd"], index=1)
         size = st.selectbox("Size", ["1024x1024", "1792x1024", "1024x1792"], index=0)
     else:
