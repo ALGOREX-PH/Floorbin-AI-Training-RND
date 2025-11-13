@@ -229,7 +229,7 @@ Create a display that looks expensive, sophisticated, and museum-quality - simil
     st.text_area(
         "Auto-Generated Prompt",
         value=auto_prompt,
-        height=200,
+        height=350,
         help="This prompt is automatically generated from your selections"
     )
 
@@ -240,7 +240,7 @@ Create a display that looks expensive, sophisticated, and museum-quality - simil
         custom_prompt = st.text_area(
             "Custom Prompt",
             value=auto_prompt,
-            height=200,
+            height=350,
             help="Edit the prompt to your specific needs"
         )
         final_prompt = custom_prompt
