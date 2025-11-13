@@ -84,7 +84,8 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
 5. **Set design direction**:
    - **Choose overall design tone**: Premium & Sophisticated, Striking & Powerful, Bold & Aggressive, Minimal & Clean, or Vibrant & Energetic
    - Creative mood (auto-populated based on tone, customizable)
-   - Color palette (e.g., "White & Black", "Gold Accents")
+   - Color palette presets (e.g., "White & Black", "Gold Accents")
+   - **Custom color pickers**: Choose exact colors for primary panels, accent lighting, and base platform
    - Key design elements (e.g., "3D Product Rendering", "Bold Typography")
    - Historical style reference (optional)
 
