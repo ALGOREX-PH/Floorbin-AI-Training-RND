@@ -65,7 +65,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📚 About")
     st.markdown("""
-    This tool generates floorbin design concepts for IQOS TEREA products using OpenAI's DALL-E.
+    This tool generates floorbin design concepts for IQOS TEREA products using OpenAI's image generation models.
 
     **Features:**
     - Product-specific customization
