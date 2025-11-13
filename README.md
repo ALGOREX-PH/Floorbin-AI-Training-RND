@@ -102,7 +102,8 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
   - High quality outputs
   - Better understanding of complex prompts
   - Accurate 3D representation
-  - HD quality option
+  - Flexible quality options (auto, low, medium, high)
+  - Auto quality mode intelligently adjusts based on prompt
 - **Cons**:
   - Only 1 image per request
   - Premium pricing
