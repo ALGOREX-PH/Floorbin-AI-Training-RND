@@ -320,11 +320,18 @@ if st.session_state.generated_images:
 
             # Download button
             try:
-                response = requests.get(img_info['url'])
-                if response.status_code == 200:
+                image_data = None
+                if img_info['url']:
+                    response = requests.get(img_info['url'])
+                    if response.status_code == 200:
+                        image_data = response.content
+                elif img_info['b64_json']:
+                    image_data = base64.b64decode(img_info['b64_json'])
+
+                if image_data:
                     st.download_button(
                         label="📥 Download Image",
-                        data=response.content,
+                        data=image_data,
                         file_name=f"floorbin_{img_info['product'].replace(' ', '_')}_{idx+1}.png",
                         mime="image/png",
                         use_container_width=True
