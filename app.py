@@ -49,13 +49,17 @@ with st.sidebar:
     # Model selection
     model = st.selectbox(
         "Model",
-        ["dall-e-3", "dall-e-2"],
+        ["gpt-image-1", "dall-e-3", "dall-e-2"],
         index=0,
-        help="DALL-E 3 produces higher quality images"
+        help="gpt-image-1 is OpenAI's latest image generation model"
     )
 
     # Image quality and size
-    if model == "dall-e-3":
+    if model == "gpt-image-1":
+        quality = st.selectbox("Quality", ["auto", "low", "medium", "high"], index=0,
+                              help="auto = automatic quality selection based on prompt")
+        size = st.selectbox("Size", ["1024x1024", "1792x1024", "1024x1792"], index=0)
+    elif model == "dall-e-3":
         quality = st.selectbox("Quality", ["standard", "hd"], index=1)
         size = st.selectbox("Size", ["1024x1024", "1792x1024", "1024x1792"], index=0)
     else:
@@ -65,7 +69,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📚 About")
     st.markdown("""
-    This tool generates floorbin design concepts for IQOS TEREA products using OpenAI's DALL-E.
+    This tool generates floorbin design concepts for IQOS TEREA products using OpenAI's image generation models.
 
     **Features:**
     - Product-specific customization
@@ -203,7 +207,7 @@ Requirements:
             min_value=1,
             max_value=4 if model == "dall-e-2" else 1,
             value=1,
-            help="DALL-E 3 only supports 1 image per request"
+            help="gpt-image-1 and DALL-E 3 only support 1 image per request"
         )
 
     with col_b:
@@ -230,29 +234,44 @@ if generate_button:
         with st.spinner("🎨 Generating design concept... This may take 30-60 seconds..."):
             try:
                 # Call OpenAI API
-                if model == "dall-e-3":
+                if model == "gpt-image-1":
+                    response = openai.images.generate(
+                        model=model,
+                        prompt=final_prompt,
+                        size=size,
+                        quality=quality,
+                        n=1
+                    )
+                elif model == "dall-e-3":
                     response = openai.images.generate(
                         model=model,
                         prompt=final_prompt,
                         size=size,
                         quality=quality,
                         style=style,
-                        n=1
+                        n=1,
+                        response_format="url"
                     )
-                else:
+                else:  # dall-e-2
                     response = openai.images.generate(
                         model=model,
                         prompt=final_prompt,
                         size=size,
-                        n=num_variations
+                        n=num_variations,
+                        response_format="url"
                     )
 
                 # Store generated images
                 st.session_state.generated_images = []
 
                 for img_data in response.data:
+                    # Check if response has URL or base64 data
+                    img_url = getattr(img_data, 'url', None)
+                    img_b64 = getattr(img_data, 'b64_json', None)
+
                     st.session_state.generated_images.append({
-                        'url': img_data.url,
+                        'url': img_url,
+                        'b64_json': img_b64,
                         'revised_prompt': getattr(img_data, 'revised_prompt', None),
                         'product': product_name,
                         'model': model
@@ -274,22 +293,47 @@ if st.session_state.generated_images:
         col_img, col_info = st.columns([2, 1])
 
         with col_img:
-            st.image(img_info['url'], use_container_width=True)
+            # Download and display the image
+            try:
+                if img_info['url']:
+                    # Handle URL-based response (DALL-E models)
+                    response = requests.get(img_info['url'])
+                    if response.status_code == 200:
+                        image = Image.open(BytesIO(response.content))
+                        st.image(image, use_container_width=True)
+                    else:
+                        st.error(f"Failed to load image: Status {response.status_code}")
+                elif img_info['b64_json']:
+                    # Handle base64-encoded response (gpt-image-1)
+                    image_data = base64.b64decode(img_info['b64_json'])
+                    image = Image.open(BytesIO(image_data))
+                    st.image(image, use_container_width=True)
+                else:
+                    st.error("No image data available")
+            except Exception as e:
+                st.error(f"Error loading image: {str(e)}")
 
         with col_info:
             st.markdown(f"**Model:** {img_info['model']}")
 
             if img_info['revised_prompt']:
-                with st.expander("View Revised Prompt (DALL-E 3)"):
+                with st.expander("View Revised Prompt"):
                     st.write(img_info['revised_prompt'])
 
             # Download button
             try:
-                response = requests.get(img_info['url'])
-                if response.status_code == 200:
+                image_data = None
+                if img_info['url']:
+                    response = requests.get(img_info['url'])
+                    if response.status_code == 200:
+                        image_data = response.content
+                elif img_info['b64_json']:
+                    image_data = base64.b64decode(img_info['b64_json'])
+
+                if image_data:
                     st.download_button(
                         label="📥 Download Image",
-                        data=response.content,
+                        data=image_data,
                         file_name=f"floorbin_{img_info['product'].replace(' ', '_')}_{idx+1}.png",
                         mime="image/png",
                         use_container_width=True
@@ -303,6 +347,6 @@ if st.session_state.generated_images:
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
-    <p>Floorbin Design AI Generator | Powered by OpenAI DALL-E | Publicis AI Exploration</p>
+    <p>Floorbin Design AI Generator | Powered by OpenAI | Publicis AI Exploration</p>
 </div>
 """, unsafe_allow_html=True)
