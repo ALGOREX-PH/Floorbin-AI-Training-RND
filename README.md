@@ -9,6 +9,7 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
 ## Features
 
 - **Product Customization**: Input specific product details (name, flavor, launch date, price)
+- **Reference Image Upload**: Upload product images for visual reference and context
 - **Creative Direction**: Select mood, color palette, and design elements based on TEREA brand guidelines
 - **Historical Reference**: Apply styles from past successful campaigns (Oasis Pearl, Black Ruby, SENTIA, etc.)
 - **AI-Powered Generation**: Use gpt-image-1, DALL-E 3, or DALL-E 2 for image generation
@@ -77,6 +78,7 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
    - Product name (e.g., "TEREA Clear Regular")
    - Flavor profile (e.g., "Refined, Clear, Subtle Lemon")
    - Optional: Launch date and price
+   - Optional: Upload a reference image of the product
 
 5. **Set design direction**:
    - Creative mood (e.g., "Indulging Pleasure", "Refined")
@@ -184,11 +186,12 @@ Floorbin-AI-Training/
 ## Tips for Best Results
 
 1. **Be specific in product descriptions**: More detail = better results
-2. **Reference brand guidelines**: Mention "TEREA style", "IQOS aesthetic"
-3. **Specify 3D elements**: Explicitly request "3D floorbin structure"
-4. **Iterate prompts**: Try variations of successful prompts
-5. **Use high quality settings**: For gpt-image-1 use 'high' or 'auto', for DALL-E 3 use 'hd'
-6. **Combine with manual design**: Use AI for ideation, refine manually
+2. **Upload reference images**: Provide product photos to help the AI understand colors, styling, and branding
+3. **Reference brand guidelines**: Mention "TEREA style", "IQOS aesthetic"
+4. **Specify 3D elements**: Explicitly request "3D floorbin structure"
+5. **Iterate prompts**: Try variations of successful prompts
+6. **Use high quality settings**: For gpt-image-1 use 'high' or 'auto', for DALL-E 3 use 'hd'
+7. **Combine with manual design**: Use AI for ideation, refine manually
 
 ## Troubleshooting
 

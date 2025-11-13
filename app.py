@@ -111,13 +111,27 @@ with col1:
 
     st.markdown("---")
 
+    # Reference image upload
+    st.subheader("Product Reference Image")
+    uploaded_file = st.file_uploader(
+        "Upload Product Image (Optional)",
+        type=["png", "jpg", "jpeg"],
+        help="Upload a reference image of the product for visual context"
+    )
+
+    if uploaded_file is not None:
+        reference_image = Image.open(uploaded_file)
+        st.image(reference_image, caption="Reference Image", use_container_width=True)
+
+    st.markdown("---")
+
     st.header("Design Direction")
 
     # Creative mood
     creative_mood = st.multiselect(
         "Creative Mood",
         ["Indulging Pleasure", "Sophisticated", "Refined", "Bold", "Vibrant", "Minimalist", "Luxurious"],
-        default=["Indulging Pleasure", "Refined"],
+        default=["Sophisticated", "Refined", "Luxurious"],
         help="Select the overall mood for the design"
     )
 
@@ -135,8 +149,8 @@ with col1:
         "Key Design Elements",
         ["3D Product Rendering", "Bold Typography", "Key Visual (KV)",
          "Smoke/Vapor Effects", "Geometric Shapes", "Product Photography",
-         "Price Display", "Launch Date Badge"],
-        default=["3D Product Rendering", "Bold Typography"],
+         "Price Display", "Launch Date Badge", "Tiered Display Structure", "Premium Lighting"],
+        default=["3D Product Rendering", "Bold Typography", "Price Display", "Tiered Display Structure", "Premium Lighting"],
         help="Select elements to include in the design"
     )
 
@@ -153,32 +167,69 @@ with col2:
     st.header("Prompt Configuration")
 
     # Auto-generate prompt based on selections
-    auto_prompt = f"""Create a professional retail floorbin display design for {product_name}.
+    auto_prompt = f"""Create a premium 3D retail floorbin display for {product_name} in a sophisticated, high-end style.
 
-Product Details:
+STRUCTURE & LAYOUT:
+- Multi-tiered stepped display structure with 3-4 levels creating depth
+- Each tier should be a clean platform/shelf at different heights
+- Stepped/terraced design showing clear elevation between levels
+- Products arranged across multiple tiers with clear visibility
+- Black base platform with premium finish
+
+COLOR SCHEME & MATERIALS:
+- Primary: Clean white/cream background panels with matte finish
+- Accent: Elegant gold edge lighting around each tier
+- Base: Deep black platform and structural elements
+- Price tags: Black rectangles with white text
+- Overall: {", ".join(color_scheme)}
+
+PRODUCT DISPLAY:
+- Multiple {product_name} product boxes displayed prominently
+- IQOS ILUMA device featured on one of the middle tiers
+- Products arranged at varying angles for visual interest
+- Clear product visibility from front view
 - Flavor: {product_flavor}
+{f"- Price displays showing: {price}" if price else "- Price tags in black with white text (¥580 style)"}
 {f"- Launch Date: {launch_date}" if launch_date else ""}
-{f"- Price: {price}" if price else ""}
 
-Design Direction:
-- Mood: {", ".join(creative_mood)}
-- Colors: {", ".join(color_scheme)}
-- Key Elements: {", ".join(design_elements)}
-{f"- Style Reference: {historical_style}" if historical_style != "None" else ""}
+LIGHTING & ATMOSPHERE:
+- Professional studio lighting with soft shadows
+- Golden edge lighting (LED strips) highlighting tier edges
+- Premium lighting creating depth and dimension
+- Dramatic but sophisticated lighting
+- Clean gray studio background
 
-Requirements:
-- High-end retail point-of-sale display
-- IQOS ILUMA device aesthetic
-- Premium tobacco product positioning
-- Clean, modern, eye-catching design
-- Suitable for Japanese retail environment
-- 3D floorbin structure with product placement"""
+TYPOGRAPHY & BRANDING:
+- Large "TEREA" branding at top of display
+- Product name "{product_name}" in bold typography
+- Japanese text included for authenticity
+- Flavor description in elegant typography
+- Price displays in clean, modern font
+
+MOOD & STYLE:
+- {", ".join(creative_mood)}
+- Ultra-premium retail aesthetic
+- Japanese luxury retail environment
+- Museum-quality display presentation
+- Photorealistic 3D rendering quality
+- Professional product photography style
+
+TECHNICAL REQUIREMENTS:
+- 3D rendered appearance with perfect perspective
+- Photorealistic materials and textures
+- Professional color grading
+- Clean composition with proper negative space
+- Suitable for Japanese premium retail environment
+- IQOS ILUMA brand aesthetic
+{"- Match the product design and colors from the reference image provided" if uploaded_file is not None else ""}
+
+Create a display that looks expensive, sophisticated, and museum-quality - similar to high-end watch or perfume displays."""
 
     # Display auto-generated prompt
     st.text_area(
         "Auto-Generated Prompt",
         value=auto_prompt,
-        height=200,
+        height=350,
         help="This prompt is automatically generated from your selections"
     )
 
@@ -189,7 +240,7 @@ Requirements:
         custom_prompt = st.text_area(
             "Custom Prompt",
             value=auto_prompt,
-            height=200,
+            height=350,
             help="Edit the prompt to your specific needs"
         )
         final_prompt = custom_prompt
