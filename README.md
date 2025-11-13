@@ -81,7 +81,8 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
    - Optional: Upload a reference image of the product
 
 5. **Set design direction**:
-   - Creative mood (e.g., "Indulging Pleasure", "Refined")
+   - **Choose overall design tone**: Premium & Sophisticated, Striking & Powerful, Bold & Aggressive, Minimal & Clean, or Vibrant & Energetic
+   - Creative mood (auto-populated based on tone, customizable)
    - Color palette (e.g., "White & Black", "Gold Accents")
    - Key design elements (e.g., "3D Product Rendering", "Bold Typography")
    - Historical style reference (optional)
