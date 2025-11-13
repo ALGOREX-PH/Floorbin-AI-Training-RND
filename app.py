@@ -131,7 +131,7 @@ with col1:
     creative_mood = st.multiselect(
         "Creative Mood",
         ["Indulging Pleasure", "Sophisticated", "Refined", "Bold", "Vibrant", "Minimalist", "Luxurious"],
-        default=["Indulging Pleasure", "Refined"],
+        default=["Sophisticated", "Refined", "Luxurious"],
         help="Select the overall mood for the design"
     )
 
@@ -149,8 +149,8 @@ with col1:
         "Key Design Elements",
         ["3D Product Rendering", "Bold Typography", "Key Visual (KV)",
          "Smoke/Vapor Effects", "Geometric Shapes", "Product Photography",
-         "Price Display", "Launch Date Badge"],
-        default=["3D Product Rendering", "Bold Typography"],
+         "Price Display", "Launch Date Badge", "Tiered Display Structure", "Premium Lighting"],
+        default=["3D Product Rendering", "Bold Typography", "Price Display", "Tiered Display Structure", "Premium Lighting"],
         help="Select elements to include in the design"
     )
 
