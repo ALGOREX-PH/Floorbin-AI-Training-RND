@@ -372,9 +372,9 @@ TECHNICAL REQUIREMENTS:
 - Professional color grading
 - Clean composition with proper negative space
 - Suitable for Japanese retail environment
-{"- IMPORTANT: Match the product design and colors from the reference image provided" if uploaded_file is not None else ""}
+{"- CRITICAL: The reference image shows the actual product - keep the product EXACTLY as shown in the reference image with the SAME colors, design, packaging, and appearance. DO NOT change the product colors or design. The product must remain identical to the reference. Only the floorbin structure uses the custom colors above." if uploaded_file is not None else ""}
 
-Design Approach: Create a display that embodies the {design_tone.lower()} aesthetic while maintaining the TEREA brand identity."""
+Design Approach: Create a display that embodies the {design_tone.lower()} aesthetic while maintaining the TEREA brand identity.{" The PRODUCT itself (boxes, device, packaging) must match the reference image exactly - same colors, same design, same everything. Only the display structure/floorbin should use the specified custom colors." if uploaded_file is not None else ""}"""
 
     # Display auto-generated prompt
     st.text_area(
