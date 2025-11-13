@@ -77,6 +77,7 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
    - Product name (e.g., "TEREA Clear Regular")
    - Flavor profile (e.g., "Refined, Clear, Subtle Lemon")
    - Optional: Launch date and price
+   - Optional: Upload a reference image of the product
 
 5. **Set design direction**:
    - Creative mood (e.g., "Indulging Pleasure", "Refined")
