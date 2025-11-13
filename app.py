@@ -238,26 +238,27 @@ LIGHTING & ATMOSPHERE:
 - Clean neutral studio background"""
 
     elif design_tone == "Striking & Powerful":
-        tone_instructions = """striking, powerful, and commanding presence.
+        tone_instructions = f"""striking, powerful, and commanding presence.
 
 STRUCTURE & LAYOUT:
 - Bold, dynamic multi-level structure with dramatic height differences
 - Angular, geometric tiers creating visual impact
 - Strong vertical presence dominating the space
 - Confident structural elements
-- Dark base with strong contrast
+- Base with strong contrast
 
 COLOR SCHEME & MATERIALS:
-- High-contrast color scheme with bold accents
-- Dramatic lighting - bright spotlights or colored LED accents
-- Mix of matte black and glossy finishes
-- Metallic accents (silver, chrome, or bold gold)
+- Primary: Panels in {primary_color} with high-contrast finish
+- Accent: Dramatic lighting in {accent_color} with bold presence
+- Base: Platform in {base_color} creating strong foundation
+- Mix of matte and glossy finishes
+- Metallic or bold accents throughout
 - Strong visual contrast throughout
 
 LIGHTING & ATMOSPHERE:
 - Dramatic directional lighting creating strong shadows
 - High-intensity spotlights on key products
-- Colored accent lighting for impact
+- Accent lighting in {accent_color} for impact
 - Bold, theatrical atmosphere
 - Dark or gradient background for drama"""
 
