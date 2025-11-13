@@ -286,7 +286,16 @@ if st.session_state.generated_images:
         col_img, col_info = st.columns([2, 1])
 
         with col_img:
-            st.image(img_info['url'], use_container_width=True)
+            # Download and display the image
+            try:
+                response = requests.get(img_info['url'])
+                if response.status_code == 200:
+                    image = Image.open(BytesIO(response.content))
+                    st.image(image, use_container_width=True)
+                else:
+                    st.error(f"Failed to load image: Status {response.status_code}")
+            except Exception as e:
+                st.error(f"Error loading image: {str(e)}")
 
         with col_info:
             st.markdown(f"**Model:** {img_info['model']}")
