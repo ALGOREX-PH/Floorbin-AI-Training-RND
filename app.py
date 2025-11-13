@@ -203,16 +203,16 @@ Requirements:
             min_value=1,
             max_value=4 if model == "dall-e-2" else 1,
             value=1,
-            help="DALL-E 3 only supports 1 image per request"
+            help="gpt-image-1 and DALL-E 3 only support 1 image per request"
         )
 
     with col_b:
         style = st.selectbox(
-            "Style (DALL-E 3 only)",
+            "Style",
             ["vivid", "natural"],
             index=0,
             help="vivid = hyper-real, natural = more realistic"
-        ) if model == "dall-e-3" else "vivid"
+        ) if model in ["gpt-image-1", "dall-e-3"] else "vivid"
 
 # Generate button
 st.markdown("---")
