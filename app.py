@@ -158,12 +158,37 @@ with col1:
 
     # Color palette
     color_scheme = st.multiselect(
-        "Color Palette",
+        "Color Palette Presets",
         ["White & Black (High Contrast)", "Gold Accents", "Gradient Background",
          "Product Colors", "Bright & Colorful", "Monochrome", "Pastel Tones"],
         default=["White & Black (High Contrast)", "Gold Accents"],
-        help="Select color themes based on TEREA guidelines"
+        help="Select color theme presets or use custom colors below"
     )
+
+    st.markdown("#### Custom Color Selection")
+
+    col_color1, col_color2, col_color3 = st.columns(3)
+
+    with col_color1:
+        primary_color = st.color_picker(
+            "Primary Color",
+            value="#FFFFFF",
+            help="Main background/panel color (default: white)"
+        )
+
+    with col_color2:
+        accent_color = st.color_picker(
+            "Accent Color",
+            value="#D4AF37",
+            help="Lighting/accent color (default: gold)"
+        )
+
+    with col_color3:
+        base_color = st.color_picker(
+            "Base Color",
+            value="#000000",
+            help="Base platform color (default: black)"
+        )
 
     # Design elements
     design_elements = st.multiselect(
