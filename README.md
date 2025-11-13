@@ -97,6 +97,41 @@ This Streamlit application explores AI capabilities for producing low-mid fideli
    - View generated concepts
    - Download images for your presentation
 
+## Design Tone Options
+
+The app offers five distinct design tones to match different campaign objectives:
+
+### Premium & Sophisticated (Default)
+- Museum-quality, luxury aesthetic
+- Multi-tiered stepped structure with gold edge lighting
+- Clean white/cream panels with black base
+- Perfect for flagship products and high-end launches
+- Similar to the reference floorbin design
+
+### Striking & Powerful
+- Bold, commanding presence with dramatic impact
+- Angular geometric structures with strong vertical elements
+- High-contrast lighting and metallic accents
+- Ideal for making a strong statement in retail
+
+### Bold & Aggressive
+- High-energy, attention-grabbing design
+- Sharp angles, asymmetric structures, dynamic forms
+- Intense colors (neon accents, electric blue, red)
+- Perfect for youth-oriented or limited edition launches
+
+### Minimal & Clean
+- Ultra-refined, simple elegance
+- Clean geometric forms with emphasis on negative space
+- Monochromatic palette, soft lighting
+- Best for sophisticated, understated campaigns
+
+### Vibrant & Energetic
+- Bright, colorful, eye-catching
+- Dynamic, playful structures with flowing forms
+- Gradient backgrounds, multi-colored LED lighting
+- Great for celebratory launches and festive campaigns
+
 ## Model Comparison
 
 ### gpt-image-1 (Default)
