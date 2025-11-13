@@ -127,12 +127,33 @@ with col1:
 
     st.header("Design Direction")
 
-    # Creative mood
+    # Design Tone Selector
+    design_tone = st.radio(
+        "Overall Design Tone",
+        ["Premium & Sophisticated", "Striking & Powerful", "Bold & Aggressive", "Minimal & Clean", "Vibrant & Energetic"],
+        index=0,
+        help="Choose the overall tone and energy of the floorbin design"
+    )
+
+    st.markdown("---")
+
+    # Creative mood - auto-populate based on tone
+    if design_tone == "Premium & Sophisticated":
+        default_mood = ["Sophisticated", "Refined", "Luxurious"]
+    elif design_tone == "Striking & Powerful":
+        default_mood = ["Bold", "Indulging Pleasure", "Sophisticated"]
+    elif design_tone == "Bold & Aggressive":
+        default_mood = ["Bold", "Vibrant"]
+    elif design_tone == "Minimal & Clean":
+        default_mood = ["Minimalist", "Refined"]
+    else:  # Vibrant & Energetic
+        default_mood = ["Vibrant", "Bold", "Indulging Pleasure"]
+
     creative_mood = st.multiselect(
-        "Creative Mood",
+        "Creative Mood (Customizable)",
         ["Indulging Pleasure", "Sophisticated", "Refined", "Bold", "Vibrant", "Minimalist", "Luxurious"],
-        default=["Sophisticated", "Refined", "Luxurious"],
-        help="Select the overall mood for the design"
+        default=default_mood,
+        help="Fine-tune the mood - pre-populated based on your tone selection"
     )
 
     # Color palette
