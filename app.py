@@ -127,22 +127,68 @@ with col1:
 
     st.header("Design Direction")
 
-    # Creative mood
+    # Design Tone Selector
+    design_tone = st.radio(
+        "Overall Design Tone",
+        ["Premium & Sophisticated", "Striking & Powerful", "Bold & Aggressive", "Minimal & Clean", "Vibrant & Energetic"],
+        index=0,
+        help="Choose the overall tone and energy of the floorbin design"
+    )
+
+    st.markdown("---")
+
+    # Creative mood - auto-populate based on tone
+    if design_tone == "Premium & Sophisticated":
+        default_mood = ["Sophisticated", "Refined", "Luxurious"]
+    elif design_tone == "Striking & Powerful":
+        default_mood = ["Bold", "Indulging Pleasure", "Sophisticated"]
+    elif design_tone == "Bold & Aggressive":
+        default_mood = ["Bold", "Vibrant"]
+    elif design_tone == "Minimal & Clean":
+        default_mood = ["Minimalist", "Refined"]
+    else:  # Vibrant & Energetic
+        default_mood = ["Vibrant", "Bold", "Indulging Pleasure"]
+
     creative_mood = st.multiselect(
-        "Creative Mood",
+        "Creative Mood (Customizable)",
         ["Indulging Pleasure", "Sophisticated", "Refined", "Bold", "Vibrant", "Minimalist", "Luxurious"],
-        default=["Sophisticated", "Refined", "Luxurious"],
-        help="Select the overall mood for the design"
+        default=default_mood,
+        help="Fine-tune the mood - pre-populated based on your tone selection"
     )
 
     # Color palette
     color_scheme = st.multiselect(
-        "Color Palette",
+        "Color Palette Presets",
         ["White & Black (High Contrast)", "Gold Accents", "Gradient Background",
          "Product Colors", "Bright & Colorful", "Monochrome", "Pastel Tones"],
         default=["White & Black (High Contrast)", "Gold Accents"],
-        help="Select color themes based on TEREA guidelines"
+        help="Select color theme presets or use custom colors below"
     )
+
+    st.markdown("#### Custom Color Selection")
+
+    col_color1, col_color2, col_color3 = st.columns(3)
+
+    with col_color1:
+        primary_color = st.color_picker(
+            "Primary Color",
+            value="#FFFFFF",
+            help="Main background/panel color (default: white)"
+        )
+
+    with col_color2:
+        accent_color = st.color_picker(
+            "Accent Color",
+            value="#D4AF37",
+            help="Lighting/accent color (default: gold)"
+        )
+
+    with col_color3:
+        base_color = st.color_picker(
+            "Base Color",
+            value="#000000",
+            help="Base platform color (default: black)"
+        )
 
     # Design elements
     design_elements = st.multiselect(
@@ -166,64 +212,169 @@ with col1:
 with col2:
     st.header("Prompt Configuration")
 
-    # Auto-generate prompt based on selections
-    auto_prompt = f"""Create a premium 3D retail floorbin display for {product_name} in a sophisticated, high-end style.
+    # Generate tone-specific instructions
+    if design_tone == "Premium & Sophisticated":
+        tone_instructions = f"""sophisticated, high-end style with museum-quality presentation.
 
 STRUCTURE & LAYOUT:
 - Multi-tiered stepped display structure with 3-4 levels creating depth
 - Each tier should be a clean platform/shelf at different heights
 - Stepped/terraced design showing clear elevation between levels
-- Products arranged across multiple tiers with clear visibility
-- Black base platform with premium finish
+- Elegant, refined structural design
+- Base platform with premium finish
 
 COLOR SCHEME & MATERIALS:
-- Primary: Clean white/cream background panels with matte finish
-- Accent: Elegant gold edge lighting around each tier
-- Base: Deep black platform and structural elements
-- Price tags: Black rectangles with white text
-- Overall: {", ".join(color_scheme)}
-
-PRODUCT DISPLAY:
-- Multiple {product_name} product boxes displayed prominently
-- IQOS ILUMA device featured on one of the middle tiers
-- Products arranged at varying angles for visual interest
-- Clear product visibility from front view
-- Flavor: {product_flavor}
-{f"- Price displays showing: {price}" if price else "- Price tags in black with white text (¥580 style)"}
-{f"- Launch Date: {launch_date}" if launch_date else ""}
+- Primary: Background panels in {primary_color} (hex color) with matte finish
+- Accent: Edge lighting in {accent_color} (hex color) around each tier
+- Base: Platform in {base_color} (hex color) and structural elements
+- Price tags styled to complement the color scheme
+- Premium, luxurious materials
 
 LIGHTING & ATMOSPHERE:
 - Professional studio lighting with soft shadows
-- Golden edge lighting (LED strips) highlighting tier edges
+- LED edge lighting in {accent_color} highlighting tier edges
 - Premium lighting creating depth and dimension
 - Dramatic but sophisticated lighting
-- Clean gray studio background
+- Clean neutral studio background"""
+
+    elif design_tone == "Striking & Powerful":
+        tone_instructions = f"""striking, powerful, and commanding presence.
+
+STRUCTURE & LAYOUT:
+- Bold, dynamic multi-level structure with dramatic height differences
+- Angular, geometric tiers creating visual impact
+- Strong vertical presence dominating the space
+- Confident structural elements
+- Base with strong contrast
+
+COLOR SCHEME & MATERIALS:
+- Primary: Panels in {primary_color} with high-contrast finish
+- Accent: Dramatic lighting in {accent_color} with bold presence
+- Base: Platform in {base_color} creating strong foundation
+- Mix of matte and glossy finishes
+- Metallic or bold accents throughout
+- Strong visual contrast throughout
+
+LIGHTING & ATMOSPHERE:
+- Dramatic directional lighting creating strong shadows
+- High-intensity spotlights on key products
+- Accent lighting in {accent_color} for impact
+- Bold, theatrical atmosphere
+- Dark or gradient background for drama"""
+
+    elif design_tone == "Bold & Aggressive":
+        tone_instructions = f"""bold, aggressive, and high-energy style.
+
+STRUCTURE & LAYOUT:
+- Dynamic, asymmetric structure with sharp angles
+- Dramatic diagonal lines and bold geometric shapes
+- Unconventional tier arrangements
+- Edgy, attention-grabbing design
+- Strong base with industrial elements
+
+COLOR SCHEME & MATERIALS:
+- Primary: Panels in {primary_color} with bold, edgy finish
+- Accent: Intense lighting in {accent_color} (can be neon-like or vibrant)
+- Base: Platform in {base_color} with strong industrial presence
+- Glossy, reflective surfaces
+- Industrial materials mixed with premium finishes
+- Sharp contrasts and bold patterns
+
+LIGHTING & ATMOSPHERE:
+- Intense, high-contrast lighting
+- Neon or colored LED strips in {accent_color} for edge lighting
+- Dramatic spotlights and shadows
+- Energetic, dynamic feel
+- Dark background with colored accents"""
+
+    elif design_tone == "Minimal & Clean":
+        tone_instructions = f"""minimal, clean, and ultra-refined style.
+
+STRUCTURE & LAYOUT:
+- Simple, elegant geometric forms
+- Clean lines with minimal ornamentation
+- 2-3 levels with clear separation
+- Emphasis on negative space
+- Pure neutral base
+
+COLOR SCHEME & MATERIALS:
+- Primary: Panels in {primary_color} with clean, minimal aesthetic
+- Accent: Subtle accents in {accent_color} if any
+- Base: Platform in {base_color} with refined finish
+- Matte finishes throughout
+- Clean, uncluttered aesthetic
+
+LIGHTING & ATMOSPHERE:
+- Soft, even lighting
+- Minimal shadows
+- Natural, clean atmosphere
+- Pure neutral or very light background
+- Focus on simplicity and clarity"""
+
+    else:  # Vibrant & Energetic
+        tone_instructions = f"""vibrant, energetic, and eye-catching style.
+
+STRUCTURE & LAYOUT:
+- Dynamic, playful multi-level design
+- Curved or flowing tier arrangements
+- Energetic, upward-moving composition
+- Fun, engaging structural elements
+- Colorful base elements
+
+COLOR SCHEME & MATERIALS:
+- Primary: Panels in {primary_color} with vibrant, energetic finish
+- Accent: Bright lighting in {accent_color} creating excitement
+- Base: Platform in {base_color} with colorful elements
+- Mix of glossy and matte finishes
+- Colorful accent elements throughout
+- Joyful, vibrant color palette
+
+LIGHTING & ATMOSPHERE:
+- Bright, colorful lighting
+- Multi-colored LED accents featuring {accent_color}
+- Cheerful, upbeat atmosphere
+- Colorful gradient background
+- Energetic, dynamic feel"""
+
+    # Auto-generate prompt based on selections
+    auto_prompt = f"""Create a premium 3D retail floorbin display for {product_name} in a {tone_instructions}
+
+PRODUCT DISPLAY:
+- Multiple {product_name} product boxes displayed prominently
+- IQOS ILUMA device featured on one of the tiers
+- Products arranged at varying angles for visual interest
+- Clear product visibility from front view
+- Flavor: {product_flavor}
+{f"- Price displays showing: {price}" if price else "- Price tags prominently displayed"}
+{f"- Launch Date: {launch_date}" if launch_date else ""}
+- Additional color guidance: {", ".join(color_scheme)}
+- Key elements to include: {", ".join(design_elements)}
 
 TYPOGRAPHY & BRANDING:
 - Large "TEREA" branding at top of display
 - Product name "{product_name}" in bold typography
 - Japanese text included for authenticity
-- Flavor description in elegant typography
-- Price displays in clean, modern font
+- Flavor description in typography matching the tone
+- Price displays in modern font
 
 MOOD & STYLE:
-- {", ".join(creative_mood)}
-- Ultra-premium retail aesthetic
-- Japanese luxury retail environment
-- Museum-quality display presentation
+- Overall mood: {", ".join(creative_mood)}
+- Design tone: {design_tone}
+- Japanese retail environment aesthetic
+- IQOS ILUMA brand aesthetic
 - Photorealistic 3D rendering quality
 - Professional product photography style
+{f"- Style reference: {historical_style}" if historical_style != "None" else ""}
 
 TECHNICAL REQUIREMENTS:
 - 3D rendered appearance with perfect perspective
 - Photorealistic materials and textures
 - Professional color grading
 - Clean composition with proper negative space
-- Suitable for Japanese premium retail environment
-- IQOS ILUMA brand aesthetic
-{"- Match the product design and colors from the reference image provided" if uploaded_file is not None else ""}
+- Suitable for Japanese retail environment
+{"- CRITICAL: The reference image shows the actual product - keep the product EXACTLY as shown in the reference image with the SAME colors, design, packaging, and appearance. DO NOT change the product colors or design. The product must remain identical to the reference. Only the floorbin structure uses the custom colors above." if uploaded_file is not None else ""}
 
-Create a display that looks expensive, sophisticated, and museum-quality - similar to high-end watch or perfume displays."""
+Design Approach: Create a display that embodies the {design_tone.lower()} aesthetic while maintaining the TEREA brand identity.{" The PRODUCT itself (boxes, device, packaging) must match the reference image exactly - same colors, same design, same everything. Only the display structure/floorbin should use the specified custom colors." if uploaded_file is not None else ""}"""
 
     # Display auto-generated prompt
     st.text_area(
